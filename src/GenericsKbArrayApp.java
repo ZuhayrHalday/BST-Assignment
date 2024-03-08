@@ -47,6 +47,11 @@ public class GenericsKbArrayApp {
     }
 
     public static void TermSearch(String term){
+        if (arrFile == null){
+            System.out.println("Missing data, knowledge base not loaded yet.");
+            return;
+        }
+
         
     }
 
