@@ -1,11 +1,19 @@
 import java.io.File;
 import java.util.Scanner;
 
+/**
+ * Serves as a node of a BST.
+ */
 class Node{
     String data;
     Node left;
     Node right;
 
+    /**
+     * Construction of node.
+     * 
+     * @param data The data/value stored in the node of the BST.
+     */
     public Node(String data){
         this.data = data;
         left = null;
@@ -13,13 +21,24 @@ class Node{
     }
 }
 
+/**
+ * Class representing a BST data type.
+ */
 class BST{
     Node root;
 
+    /**
+     * Construction of an empty BST as seen in lecture notes.
+     */
     public BST(){
         root = null;
     }
 
+    /**
+     * Inserts a new node into the BST using the standard BST insertion algorithm.
+     * 
+     * @param data Data of the new node being added to the BST.
+     */
     public void insert(String data){
         root = insertBST(root, data);
     }
@@ -40,6 +59,12 @@ class BST{
         return root;
     }
 
+    /**
+     * Searches for a node in the BST.
+     * 
+     * @param term The term which the node to be found stores.
+     * @return true if the term is found, false otherwise.
+     */
     public boolean search(String searchTerm){
         return searchBST(root, searchTerm);
     }
@@ -65,6 +90,13 @@ class BST{
 
     }
 
+    /**
+     * Searches for an node in the BST using both its term and statement data.
+     * 
+     * @param term     The term to be found.
+     * @param sentence The sentence to be found.
+     * @return true if the item is found, false otherwise.
+     */
     public boolean TermAndStatementSearch(String searchTerm, String searchStatement){
         return TermAndStatementSearchBST(root, searchTerm, searchStatement);
     }
@@ -91,6 +123,9 @@ class BST{
         return TermAndStatementSearchBST(root.right, searchTerm, searchStatement);
     }
 
+    /**
+     * Prints the terms in the BST in order of the preOrder traversal algorithm.
+     */
     public void preOrderTraversal(String searchTerm){
         boolean foundTerm = preOrderTraversalBST(root, searchTerm);
         if (foundTerm == false){
@@ -115,10 +150,19 @@ class BST{
         return foundTerm;
     }
 }
+
+/**
+ * Main class of the BST program.
+ */
 public class GenericsKbBSTApp {
     private static BST bst;
     private static boolean fileError = true;
 
+    /**
+     * Loads the file contents into the BST data structure.
+     * 
+     * @param fileName The name of the file containing the data to be read.
+     */
     private static void loadFile(String fileName){
         try {
             Scanner file = new Scanner(new File(fileName));
@@ -135,6 +179,11 @@ public class GenericsKbBSTApp {
         }
     }
     
+    /**
+     * Main method of the BST program.
+     * 
+     * @param args The command line arguments.
+     */
     public static void main(String[] args){
         bst = new BST();
         Scanner keyboard = new Scanner(System.in);
