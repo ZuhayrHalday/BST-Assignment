@@ -59,15 +59,37 @@ public class GenericsKbArrayApp {
             if (partOfLine.length >= 3 && (partOfLine[0].equals(term) || partOfLine[0].startsWith(term + " ") || partOfLine[0].endsWith(" " + term) || partOfLine[0].contains(" " + term + " "))){
                 String statement = partOfLine[1];
                 String score = partOfLine[2];
-                System.out.println("\nStatement found: " + statement + " (Confidence score: " + score + ")\n");
+                System.out.println("\nStatement termFound: " + statement + " (Confidence score: " + score + ")\n");
                 termFound = true;
                 break;
             }
         }
 
-        if (termFound = false){
-            System.out.println("'" + term + "' was not found in the current knowledge base.");
+        if (termFound == false){
+            System.out.println("'" + term + "' was not termFound in the current knowledge base.");
         }
     }
 
+    public static void TermAndStatementSearch(String term, String statement) {
+        if (arrFile == null) {
+            System.out.println("Missing data, knowledge base not loaded yet.");
+            return;
+        }
+
+        boolean termFound = false;
+
+        for (String result : arrFile) {
+            String[] partOfLine = result.split("\t");
+            if (partOfLine.length >= 3 && partOfLine[0].equals(term) && partOfLine[1].equals(statement)) {
+                String score = partOfLine[2];
+                System.out.println("\nThe statement was termFound and has a confidence score of  " + score + ".\n");
+                termFound = true;
+                break;
+            }
+        }
+
+        if (termFound == false) {
+            System.out.println("Term and statement: '" +term +"' and '" + statement+ "' was not termFound in the knowledge base.");
+        }
+    }
 }
