@@ -151,7 +151,7 @@ public class GenericsKbArrayApp {
                 }
                 System.out.print("Enter the term to search: ");
                 dataInput = keyboard.nextLine();
-                TermSearch(menu);
+                TermSearch(dataInput);
 
             } else if (menuInput.equals("4")) {
                 if (arrFile == null) {
