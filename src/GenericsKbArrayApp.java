@@ -26,4 +26,24 @@ public class GenericsKbArrayApp {
         return numLines;
     }
 
+    public static String[] ReadIntoArray(String fileName){
+        int numLines = LineCount(fileName);
+        String[] arrFile = new String[numLines];
+
+        try {
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            int arrIndex = 0;
+            String newLine;
+
+            while ((newLine = bufferedReader.readLine()) != null){
+                arrFile[arrIndex++] = newLine;
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            System.err.println("Ran into an error while trying to read file: " + e.getMessage());
+        }
+        return arrFile;    
+    }
+
 }
