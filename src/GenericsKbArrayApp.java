@@ -59,7 +59,6 @@ public class GenericsKbArrayApp {
                 String score = partOfLine[2];
                 System.out.println("\nStatement found: " + statement + " (Confidence score: " + score + ")\n");
                 termFound = true;
-                break;
             }
         }
 
