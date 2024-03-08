@@ -87,6 +87,28 @@ class BST{
 
         return TermAndStatementSearchBST(root.right, searchTerm, searchStatement);
     }
+
+    public void preOrderTraversal(String searchTerm){
+        boolean foundTerm = preOrderTraversalBST(root, searchTerm);
+        if (foundTerm == false){
+            System.out.println("'" + searchTerm + "' was not found in the current knowledge base.");
+        }
+    }
+
+    private boolean preOrderTraversalBST(Node root, String searchTerm){
+        boolean foundTerm = false;
+        if (root != null){
+            String[] partOfLine =root.data.split("\t");
+            String term = partOfLine[0];
+            if (term.equals(searchTerm) || term.startsWith(term + " ")){
+                System.out.println(root.data);
+                foundTerm =true;
+            }
+            foundTerm |= preOrderTraversalBST(root.left, searchTerm);
+            foundTerm |= preOrderTraversalBST(root.right, searchTerm);
+        }
+        return foundTerm;
+    }
 }
 public class GenericsKbBSTApp {
     
