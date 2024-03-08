@@ -28,6 +28,7 @@ public class GenericsKbArrayApp {
     public static String[] ReadIntoArray(String fileName){
         int numLines = LineCount(fileName);
         String[] arrFile = new String[numLines];
+        fileError = false;
 
         try {
             FileReader fileReader = new FileReader(fileName);
