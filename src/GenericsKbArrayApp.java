@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class GenericsKbArrayApp {
-    private static String[] arrFile;
+    private static String[] arrFile = null;
     
     public static int LineCount(String fileName){
         int numLines = 0;
@@ -105,18 +105,22 @@ public class GenericsKbArrayApp {
                 "5. Quit\r\n\n" + //
                 "Enter your choice: ";
 
-        while (menuInput != "5") {
+        while (!menuInput.equals("5")) {
             System.out.print(menu);
             menuInput = keyboard.nextLine().trim();
 
-            if (menuInput == "1") {
+            if (menuInput.equals("1")) {
                 System.out.print("Enter file name: ");
                 dataInput = keyboard.nextLine();
-                arrFile = ReadIntoArray(dataInput);
-
+                try {
+                    arrFile = ReadIntoArray(dataInput);
+                } catch (Exception e) {
+                    continue;
+                }
+                
                 System.out.println("\n Knowledge base loaded successfully.\n");
 
-            } else if (menuInput == "2") {
+            } else if (menuInput.equals("2")) {
                 if (arrFile == null) {
                     System.out.println("\nMissing data, knowledge base not loaded yet.\n");
                     continue;
@@ -140,7 +144,7 @@ public class GenericsKbArrayApp {
 
                 System.out.println("\nStatement for term " + term + " has been updated.\n");
 
-            } else if (menuInput == "3") {
+            } else if (menuInput.equals("3")) {
                 if (arrFile == null) {
                     System.out.println("\nMissing data, knowledge base not loaded yet.\n");
                     continue;
@@ -149,7 +153,7 @@ public class GenericsKbArrayApp {
                 dataInput = keyboard.nextLine();
                 TermSearch(menu);
 
-            } else if (menuInput == "4") {
+            } else if (menuInput.equals("4")) {
                 if (arrFile == null) {
                     System.out.println("\nMissing data, knowledge base not loaded yet.\n");
                     continue;
@@ -161,7 +165,7 @@ public class GenericsKbArrayApp {
                 System.out.print("Enter the statement to search for: ");
                 dataInput = keyboard.nextLine();
                 String statement = dataInput;
-                
+
                 TermAndStatementSearch(term, statement);
             }
         }
