@@ -168,8 +168,9 @@ public class GenericsKbBSTApp {
                 System.out.print("Enter the confidence score: ");
                 String confidence = keyboard.nextLine();
 
-                String newElement = term + "\t" + statement + "\t" + confidence;
-                bst.insert(newElement);
+                String newData = term + "\t" + statement + "\t" + confidence;
+
+                bst.insert(newData);
                 System.out.println("\nStatement for term " + term + " has been updated.\n");
 
             } else if (menuInput.equals("3")) {
@@ -180,6 +181,7 @@ public class GenericsKbBSTApp {
                 System.out.print("Enter the term to search: ");
                 String searchTerm = keyboard.nextLine();
                 System.out.println("");
+
                 bst.preOrderTraversal(searchTerm);
                 System.out.println("");
 
@@ -190,9 +192,10 @@ public class GenericsKbBSTApp {
                 }
                 System.out.print("Enter the term: ");
                 String searchTerm = keyboard.nextLine();
+
                 System.out.print("Enter the statement to search for: ");
                 String searchStatement = keyboard.nextLine();
-                // Search for item in the knowledge base by term and sentence
+
                 bst.TermAndStatementSearch(searchTerm, searchStatement); 
             }
         }
