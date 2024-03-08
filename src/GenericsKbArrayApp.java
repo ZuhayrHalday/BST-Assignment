@@ -5,6 +5,7 @@ import java.io.FileReader;
 
 public class GenericsKbArrayApp {
     private static String[] arrFile = null;
+    private static boolean fileError = false;
     
     public static int LineCount(String fileName){
         int numLines = 0;
@@ -40,6 +41,7 @@ public class GenericsKbArrayApp {
             bufferedReader.close();
         } catch (Exception e) {
             System.err.println("Ran into an error while trying to read file: " + e.getMessage());
+            fileError = true;
         }
         return arrFile;    
     }
@@ -111,13 +113,11 @@ public class GenericsKbArrayApp {
             if (menuInput.equals("1")) {
                 System.out.print("Enter file name: ");
                 dataInput = keyboard.nextLine();
-                try {
-                    arrFile = ReadIntoArray(dataInput);
-                } catch (Exception e) {
-                    continue;
-                }
+                arrFile = ReadIntoArray(dataInput);
                 
-                System.out.println("\n Knowledge base loaded successfully.\n");
+                if (fileError == false){
+                    System.out.println("\n Knowledge base loaded successfully.\n");
+                }
 
             } else if (menuInput.equals("2")) {
                 if (arrFile == null) {
