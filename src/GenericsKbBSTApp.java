@@ -61,6 +61,32 @@ class BST{
         return searchBST(root.right, searchTerm);
 
     }
+
+    public boolean TermAndStatementSearch(String searchTerm, String searchStatement){
+        return TermAndStatementSearchBST(root, searchTerm, searchStatement);
+    }
+
+    private boolean TermAndStatementSearchBST(Node root, String searchTerm, String searchStatement){
+        if (root == null){
+            System.out.println("Term and statement: '" +searchTerm +"' and '" + searchStatement+ "' was not found in the knowledge base.");
+            return false;
+        }
+
+        String[] partOfLine =root.data.split("\t");
+        String term = partOfLine[0];
+        String statement = partOfLine[1];
+        if (term.equals(searchTerm) && statement.equals(searchStatement)) {
+            System.out.println("\nStatement found: " + statement + " (Confidence score: " + partOfLine[2] + ")\n");
+            return true;
+        }
+
+        int cmp = searchTerm.compareTo(term);
+        if (cmp < 0){
+            return TermAndStatementSearchBST(root.left, searchTerm, searchStatement);
+        }
+
+        return TermAndStatementSearchBST(root.right, searchTerm, searchStatement);
+    }
 }
 public class GenericsKbBSTApp {
     
