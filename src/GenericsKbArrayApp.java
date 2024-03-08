@@ -52,7 +52,21 @@ public class GenericsKbArrayApp {
             return;
         }
 
-        
+        boolean termFound = false;
+
+        for (String result : arrFile){
+            String[] partOfLine = result.split("\t");
+            if (partOfLine.length >= 3 && (partOfLine[0].equals(term) || partOfLine[0].startsWith(term + " ") || partOfLine[0].endsWith(" " + term) || partOfLine[0].contains(" " + term + " "))){
+                String statement = partOfLine[1];
+                String score = partOfLine[2];
+                System.out.println("\nStatement found: " + statement + " (Confidence score: " + score + ")\n");
+                termFound = true;
+            }
+        }
+
+        if (termFound = false){
+            System.out.println("'" + term + "' was not found in the current knowledge base.");
+        }
     }
 
 }
