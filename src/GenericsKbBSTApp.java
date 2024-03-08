@@ -103,8 +103,10 @@ class BST{
         if (root != null){
             String[] partOfLine =root.data.split("\t");
             String term = partOfLine[0];
-            if (term.equals(searchTerm) || term.startsWith(term + " ")){
-                System.out.println(root.data);
+            if (term.equals(searchTerm) || term.startsWith(searchTerm + " ")){
+                String statement = partOfLine[1];
+                String score = partOfLine[2];
+                System.out.println("\nStatement found: " + statement + " (Confidence score: " + score + ")\n");
                 foundTerm =true;
             }
             foundTerm |= preOrderTraversalBST(root.left, searchTerm);
