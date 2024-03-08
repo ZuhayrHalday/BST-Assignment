@@ -12,13 +12,17 @@ public class GenericsKbArrayApp {
         int numLines = 0;
         String file = fileName;
 
-        FileReader fileReader = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        try {
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-        while (bufferedReader.readLine() != null){
-            numLines++;
+            while (bufferedReader.readLine() != null){
+                numLines++;
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            System.err.println("Ran into an error while trying to read file: " + e.getMessage());
         }
-        
         return numLines;
     }
 
