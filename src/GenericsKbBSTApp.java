@@ -115,7 +115,7 @@ class BST{
 }
 public class GenericsKbBSTApp {
     private static BST bst;
-    private static boolean fileError = false;
+    private static boolean fileError = true;
 
     private static void loadFile(String fileName){
         try {
