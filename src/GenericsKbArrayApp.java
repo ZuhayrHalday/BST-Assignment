@@ -113,51 +113,55 @@ public class GenericsKbArrayApp {
                 System.out.print("Enter file name: ");
                 dataInput = keyboard.nextLine();
                 arrFile = ReadIntoArray(dataInput);
+
                 System.out.println("\n Knowledge base loaded successfully.\n");
 
             } else if (menuInput == "2") {
                 if (arrFile == null) {
                     System.out.println("\nMissing data, knowledge base not loaded yet.\n");
-                    System.out.print(menu);
                     continue;
                 }
                 System.out.print("Enter the term: ");
                 dataInput = keyboard.nextLine();
                 String term = dataInput;
+
                 System.out.print("Enter the statement: ");
                 dataInput = keyboard.nextLine();
                 String statement = dataInput;
+
                 System.out.print("Enter the confidence score: ");
                 dataInput = keyboard.nextLine();
                 String score = dataInput;
+
                 String newElement = term + "\t" + statement + "\t" + score;
 
                 arrFile = Arrays.copyOf(arrFile, arrFile.length + 1);
                 arrFile[arrFile.length - 1] = newElement;
+
                 System.out.println("\nStatement for term " + term + " has been updated.\n");
 
-            } else if (menuInput.equals("3")) {
+            } else if (menuInput == "3") {
                 if (arrFile == null) {
                     System.out.println("\nMissing data, knowledge base not loaded yet.\n");
-                    System.out.print(menu);
                     continue;
                 }
                 System.out.print("Enter the term to search: ");
                 dataInput = keyboard.nextLine();
                 TermSearch(menu);
 
-            } else if (menuInput.equals("4")) {
+            } else if (menuInput == "4") {
                 if (arrFile == null) {
                     System.out.println("\nMissing data, knowledge base not loaded yet.\n");
-                    System.out.print(menu);
-                    continue; // Skip adding the new element
+                    continue;
                 }
                 System.out.print("Enter the term: ");
                 dataInput = keyboard.nextLine();
                 String term = dataInput;
+
                 System.out.print("Enter the statement to search for: ");
                 dataInput = keyboard.nextLine();
                 String statement = dataInput;
+                
                 TermAndStatementSearch(term, statement);
             }
         }
