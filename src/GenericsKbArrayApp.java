@@ -5,5 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class GenericsKbArrayApp {
-    private static String[] arrFile;    
+    private static String[] arrFile;
+    
 }
