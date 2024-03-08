@@ -28,7 +28,6 @@ class BST{
         }
 
         int cmp = data.compareTo(root.data);
-
         if (cmp < 0) {
             root.left = insertBST(root.left, data);
         } else if (cmp > 0) {
@@ -36,6 +35,31 @@ class BST{
         }
 
         return root;
+    }
+
+    public boolean search(String searchTerm){
+        return searchBST(root, searchTerm);
+    }
+
+    private boolean searchBST(Node root, String searchTerm){
+        if (root == null){
+            return false;
+        }
+
+        String[] partOfLine =root.data.split("\t");
+        String term = partOfLine[0];
+        if (term.equals(searchTerm) || term.startsWith(term + " ")){
+            System.out.println(root.data);
+            return true;
+        }
+
+        int cmp = searchTerm.compareTo(term);
+        if (cmp < 0){
+            return searchBST(root.left, searchTerm);
+        }
+
+        return searchBST(root.right, searchTerm);
+
     }
 }
 public class GenericsKbBSTApp {
