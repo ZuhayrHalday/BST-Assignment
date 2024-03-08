@@ -3,10 +3,19 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+/**
+ * This program reads generics from a text file and stores them in an array in order to manipulate the data.
+ */
 public class GenericsKbArrayApp {
     private static String[] arrFile = null;
     private static boolean fileError = false;
     
+    /**
+     * Finds the number of lines in a file in order for an adequately sized array to be made.
+     * 
+     * @param fileName The name of the file which is being read.
+     * @return The total amount of lines in the file.
+     */
     public static int LineCount(String fileName){
         int numLines = 0;
         String file = fileName;
@@ -25,6 +34,12 @@ public class GenericsKbArrayApp {
         return numLines;
     }
 
+    /**
+     * Reads all the lines from a file into an array.
+     * 
+     * @param fileName The name of the file which is being read.
+     * @return An array containing all lines from a given file.
+     */
     public static String[] ReadIntoArray(String fileName){
         int numLines = LineCount(fileName);
         String[] arrFile = new String[numLines];
@@ -47,6 +62,11 @@ public class GenericsKbArrayApp {
         return arrFile;    
     }
 
+    /**
+     * Searches for an entry in the array using the term.
+     * 
+     * @param term The term which needs to be found.
+     */
     public static void TermSearch(String term){
         if (arrFile == null){
             System.out.println("Missing data, knowledge base not loaded yet.");
@@ -70,6 +90,12 @@ public class GenericsKbArrayApp {
         }
     }
 
+    /**
+     * Searches for an entry in the array using the term and its matching statement.
+     * 
+     * @param term      The term to be found.
+     * @param statement The statement to be found.
+     */
     public static void TermAndStatementSearch(String term, String statement) {
         if (arrFile == null) {
             System.out.println("Missing data, knowledge base not loaded yet.");
@@ -93,6 +119,11 @@ public class GenericsKbArrayApp {
         }
     }
 
+    /**
+     * The main method which contains most of the code dealing with user interaction.
+     * 
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
 
         String menuInput = "";
