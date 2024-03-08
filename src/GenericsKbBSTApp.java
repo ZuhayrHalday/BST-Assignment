@@ -9,6 +9,14 @@ class Node{
         right = null;
     }
 }
+
+class BST{
+    Node root;
+
+    public BST(){
+        root = null;
+    }
+}
 public class GenericsKbBSTApp {
     
 }
