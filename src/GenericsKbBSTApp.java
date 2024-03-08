@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 class Node{
     String data;
     Node left;
@@ -111,5 +115,23 @@ class BST{
     }
 }
 public class GenericsKbBSTApp {
+    private static BST bst;
+    private static boolean fileError = false;
+
+    private static void loadFile(String fileName){
+        try {
+            Scanner file = new Scanner(new File(fileName));
+            while (file.hasNextLine()) {
+                String line = file.nextLine();
+                bst.insert(line); // Assuming each line represents a statement in the knowledge base
+            }
+            System.out.println("\nKnowledge base loaded successfully.\n");
+            fileError = false;
+            file.close();
+        } catch (Exception e) {
+            System.err.println("Ran into an error while trying to read file: " + e.getMessage());
+            fileError = true;
+        }
+    }
     
 }
