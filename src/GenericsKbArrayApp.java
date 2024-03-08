@@ -46,4 +46,8 @@ public class GenericsKbArrayApp {
         return arrFile;    
     }
 
+    public static void TermSearch(String term){
+        
+    }
+
 }
