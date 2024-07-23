@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"<Unnamed>","c":"GenericsKbBSTApp","l":"GenericsKbBSTApp()","u":"%3Cinit%3E()"},{"p":"<Unnamed>","c":"GenericsKbBSTApp","l":"main(String[])","u":"main(java.lang.String[])"}];updateSearchResults();
